@@ -28,8 +28,9 @@ $(function(){
                 // 現在の単語を格納
                 let phrase = segs[i];
 
+                let hoge = obj[phrase]
                 // 絵文字が存在するかどうか調べる
-                if(obj[phrase]){
+                if(hoge != undefined){
                     // segs[i]で絵文字を配列で取得
                     let emojiArray = obj[segs[i]];
                     // 取得した絵文字の数
@@ -48,6 +49,7 @@ $(function(){
                         // 絵文字が1個の場合は1個表示させる
                         segs[i] = phrase + emojiArray[0];
                     }
+
                 }
             }
         }
