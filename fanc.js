@@ -38,8 +38,8 @@ $(function(){
                     // 取得した絵文字の数
                     if(emojiCount > 2){
                         // 絵文字が3個以上の場合はランダムで絵文字が2個選ばれる
-                        let focusEmoji1 = Math.floor(Math.random()*((emojiCount - 1) - 0) + 0);
-                        let focusEmoji2 = Math.floor(Math.random()*((emojiCount - 1) - 0) + 0);
+                        let focusEmoji1 = Math.floor(Math.random() * emojiCount);
+                        let focusEmoji2 = Math.floor(Math.random() * emojiCount);
                         segs[i] = phrase + emojiArray[focusEmoji1] + emojiArray[focusEmoji2];
                     }else if(emojiCount == 2){
                         // 絵文字の数が2個の場合は2つ表示させる
@@ -49,10 +49,6 @@ $(function(){
                         segs[i] = phrase + emojiArray[0];
                     }
                 }
-
-                console.log(segs[i]);
-
-
             }
         }
 
