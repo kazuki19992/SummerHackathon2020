@@ -43,6 +43,7 @@ $(function(){
     replacementText("草", "w");
     replacementText("！", "❗️❗️");
     replacementText("。", "❗️");
+    replacementText("？", "❓❓");
 });
 
 // 置換処理を行う
