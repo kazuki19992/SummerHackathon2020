@@ -34,14 +34,24 @@ $(function(){
               // 検索の対象だった場合はjsonファイルを検索する
               console.log(segs[i]);
 
+
           }
       }
-  */
-    // ページ内を加工(草→w)
-    $("body").html(
-        $("body").html().replace( /草/g, "w" )
-    );
+    */
+    // ページ内を置換
+    replacementText("大草原", "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+    replacementText("草", "w");
+    replacementText("！", "❗️❗️");
+    replacementText("。", "❗️");
 });
+
+// 置換処理を行う
+function replacementText(patternMatch, replaceText){
+    pattern = new RegExp(patternMatch, "g");
+    $("body").html(
+		$("body").html().replace( pattern, replaceText )
+	);
+}
 
 function ja2Bit ( str ) {
     // 日本語だけで構成されているか否か判断する
