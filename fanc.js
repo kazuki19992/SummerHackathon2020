@@ -4,15 +4,9 @@ $(function(){
     let segmenter = new TinySegmenter();
     let bodyElement = $("body").html();
     let segs = segmenter.segment(bodyElement);
-    // $.getJSON("https://raw.githubusercontent.com/yagays/emoji-ja/master/data/keyword2emoji_ja.json", (json) => {
-    //     // jsonを受信したあとで実行する処理をここに書くっぽい！
-    //     // jsonを連想配列にパースする！
-    //     json = JSON.parse(json);
-    // });
+    var json;
 
-    // console.log(json);
-    // console.log(segs.join(" | "));
-
+    // jsonを取得
     (function (handleload) {
         var xhr = new XMLHttpRequest;
 
@@ -20,29 +14,47 @@ $(function(){
         xhr.open('GET', 'https://raw.githubusercontent.com/yagays/emoji-ja/master/data/keyword2emoji_ja.json', true);
         xhr.send(null);
     }(function handleLoad (event) {
-        var xhr = event.target,
-            obj = JSON.parse(xhr.responseText);
-
+        var xhr = event.target, obj = JSON.parse(xhr.responseText);
         console.log(obj);
+
+        // jsonのキーを検索する
+        // segsの要素数を取得
+        let segsLength = segs.length;
+
+        for(let i = 0; i < segsLength; i++){
+            if(ja2Bit(segs[i])){
+                // 検索の対象だった場合はjsonファイルを検索する
+
+                // 現在の単語を格納
+                let phrase = segs[i];
+
+                // 絵文字が存在するかどうか調べる
+                if(obj[phrase]){
+                    // segs[i]で絵文字を配列で取得
+                    let emojiArray = obj[segs[i]];
+                    // 取得した絵文字の数
+                    let emojiCount = emojiArray.length;
+                    // 絵文字の選択
+                    let focusEmoji = Math.floor(Math.random()*((emojiCount - 1) - 0) + 0);
+                    // segs[i]を単語と絵文字に置き換える
+                    segs[i] = phrase + emojiArray[focusEmoji];
+                }
+
+                console.log(segs[i]);
+
+
+            }
+        }
+
     }));
-    /*
-      // segsの要素数を取得
-      let segsLength = segs.length;
+    // console.log(json);
 
-      for(let i = 0; i < segsLength; i++){
-          if(ja2Bit(segs[i])){
-              // 検索の対象だった場合はjsonファイルを検索する
-              console.log(segs[i]);
-
-
-          }
-      }
-    */
     // ページ内を置換
     replacementText("大草原", "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
     replacementText("草", "w");
     replacementText("！", "❗️❗️");
     replacementText("。", "❗️");
+    replacementText("？", "❓❓");
 });
 
 // 置換処理を行う
