@@ -13,22 +13,34 @@ $(function(){
     // console.log(json);
     // console.log(segs.join(" | "));
 
-    // segsの要素数を取得
-    let segsLength = segs.length;
+    (function (handleload) {
+        var xhr = new XMLHttpRequest;
 
-    for(let i = 0; i < segsLength; i++){
-        if(ja2Bit(segs[i])){
-            // 検索の対象だった場合はjsonファイルを検索する
-            console.log(segs[i]);
+        xhr.addEventListener('load', handleload, false);
+        xhr.open('GET', 'https://raw.githubusercontent.com/yagays/emoji-ja/master/data/keyword2emoji_ja.json', true);
+        xhr.send(null);
+    }(function handleLoad (event) {
+        var xhr = event.target,
+            obj = JSON.parse(xhr.responseText);
 
-        }
-    }
+        console.log(obj);
+    }));
+    /*
+      // segsの要素数を取得
+      let segsLength = segs.length;
 
+      for(let i = 0; i < segsLength; i++){
+          if(ja2Bit(segs[i])){
+              // 検索の対象だった場合はjsonファイルを検索する
+              console.log(segs[i]);
 
-	// ページ内を加工(草→w)
-	$("body").html(
-		$("body").html().replace( /草/g, "w" )
-	);
+          }
+      }
+  */
+    // ページ内を加工(草→w)
+    $("body").html(
+        $("body").html().replace( /草/g, "w" )
+    );
 });
 
 function ja2Bit ( str ) {
