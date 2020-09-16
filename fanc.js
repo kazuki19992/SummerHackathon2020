@@ -3,6 +3,7 @@ $(function(){
     // htmlのbody内を形態素解析を行い、日本語の単語ごとに区切る
     let segmenter = new TinySegmenter();
     let bodyElement = $("body").html();
+    // console.log(bodyElement);
     let segs = segmenter.segment(bodyElement);
 
     // 20のキャッシュ空間を作成する
@@ -62,7 +63,7 @@ $(function(){
                             }
                             cache[0][0] = tmpKey;
                             cache[1][0] = tmpEmoji;
-                            consoleCashe(cache, 1, segs[i]);
+                            // consoleCashe(cache, 1, segs[i]);
                         }
                     }
                     let emojiArray;
@@ -95,7 +96,8 @@ $(function(){
                             // キャッシュ更新
                             cache = cacheLRU(cache, phrase, emojiArray[0]);
                         }
-                        consoleCashe(cache, 0, segs[i]);
+                        replacementText(phrase, segs[i]);
+                        // consoleCashe(cache, 0, segs[i]);
                     }
                 }else{
                     segs[i] = phrase + "(接続詞?)";
@@ -108,6 +110,15 @@ $(function(){
         }
 
     }));
+
+    // // segs内を全て結合
+    // let bodyContent = segs.join('');
+
+    // // 結合したsegsでbodyを置き換え
+    // $("body").html(
+    //     $("body").html().replace(bodyElement, bodyContent)
+    // );
+
     // console.log(json);
 
     // ページ内を置換
