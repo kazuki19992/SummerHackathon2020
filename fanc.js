@@ -11,7 +11,7 @@ $(function(){
         var xhr = new XMLHttpRequest;
 
         xhr.addEventListener('load', handleload, false);
-        xhr.open('GET', 'https://raw.githubusercontent.com/yagays/emoji-ja/master/data/keyword2emoji_ja.json', true);
+        xhr.open('GET', 'https://raw.githubusercontent.com/kazuki19992/emoji-ja/master/data/keyword2emoji_ja.json', true);
         xhr.send(null);
     }(function handleLoad (event) {
         var xhr = event.target, obj = JSON.parse(xhr.responseText);
