@@ -5,7 +5,7 @@
 	"description": "Chromeを驚くほど使いづらくする拡張機能。サプライズをあなたに。",
 	"content_scripts": [
 	  {
-			"matches": ["http://*.jp/*", "http://*.com/*", "http://*.net/*", "http://*.org/*", "http://*.xyz/*", "http://*.site/*", "http://*.page/*", "http://*.inc/*", "https://*.jp/*", "https://*.com/*", "https://*.net/*", "https://*.org/*", "https://*.xyz/*", "https://*.site/*", "https://*.page/*", "https://*.inc/*"],
+			"matches": ["http://*/*", "https://*/*"],
 			"js": ["jquery-3.5.1.min.js", "fanc.js"],
 			"run_at": "document_idle"
 	  }
