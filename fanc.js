@@ -127,6 +127,20 @@ $(function(){
     replacementText("！", "❗️❗️");
     replacementText("。", "❗️");
     replacementText("？", "❓❓");
+
+    // ちくちく言葉をふわふわ言葉に
+    replacementText("研究室", "🗡🌳🐮つ");
+    replacementText("嫌い", "すき");
+
+    // バリエーションを増やす
+    replacementText("見えない", "見えない🤦🤦");
+    replacementText("デザイン", "デザイン🖍🖌✂️");
+    replacementText("なのかな", "なのｶﾅ❓❓😅😅");
+    replacementText("こんにちは", "ｺﾝﾆﾁﾊｧ😘😘🥰");
+    replacementText("レター", "レター💌💓");
+    replacementText("お願いします", "お願いします🙏🙏🙇‍♂️🙇‍♂️🙇‍♂️");
+    replacementText("エビデンス", "エビエビエビデンス🍤💃🕺");
+
 });
 
 // 置換処理を行う
